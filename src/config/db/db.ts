@@ -7,7 +7,7 @@ const options: ConnectionOptions = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  entities: ["src/entities/**/*.ts"],
+  entities: ["src/api/entities/**/*.ts"],
 };
 
 export default async function connectDb() {

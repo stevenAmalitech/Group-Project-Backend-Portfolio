@@ -1,9 +1,9 @@
 import { getUserRepository } from "../repositories/user.repository";
-import { UserDetails } from "../types/typings";
+import { NewUser } from "../types/typings";
 
 // TODO: Passport js
 
-export async function addUser(newUser: UserDetails) {
+export async function addUser(newUser: NewUser) {
   try {
     const userRepository = getUserRepository();
 

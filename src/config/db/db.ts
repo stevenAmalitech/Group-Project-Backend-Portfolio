@@ -15,7 +15,7 @@ export default async function connectDb() {
     const connection = await createConnection(options);
     console.info(`Connected to ${connection.options.database} database`);
 
-    return null;
+    return connection;
   } catch (error) {
     console.error(error);
   }

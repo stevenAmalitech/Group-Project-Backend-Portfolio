@@ -16,3 +16,20 @@ export async function addProduct(req: Request, res: Response) {
     res.status(400).send(error);
   }
 }
+
+export async function getProduct(req: Request, res: Response) {
+  try {
+    const id = +req.params.id;
+
+    if (!Number.isInteger(id)) return res.status(400).send("invalid parameter");
+
+    const result = await productService.getProduct(id);
+
+    res.send(result);
+  } catch (error: any) {
+    if (error.status) return res.status(error.status).send(error.message);
+    if (error.isJoi) return res.status(422).send(error.message);
+
+    res.status(400).send(error);
+  }
+}

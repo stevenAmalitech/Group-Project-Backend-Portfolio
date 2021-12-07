@@ -6,4 +6,5 @@ export function setupRoutes(app: Express) {
   app.post("/users/user", userController.addUser);
 
   app.post("/products/product", productController.addProduct);
+  app.get("/products/:id", productController.getProduct);
 }

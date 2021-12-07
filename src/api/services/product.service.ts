@@ -20,3 +20,13 @@ export async function addProduct(newProduct: NewProduct) {
     throw error;
   }
 }
+
+export async function getProduct(id: number) {
+  try {
+    const [product] = await getProductRepository().find({ where: { id } });
+
+    return product;
+  } catch (error) {
+    throw error;
+  }
+}

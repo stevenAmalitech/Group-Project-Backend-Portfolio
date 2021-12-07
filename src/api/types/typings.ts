@@ -1,4 +1,4 @@
-export interface NewUser {
+export interface ReqUser {
   firstName: string;
   lastName: string;
   email: string;
@@ -7,7 +7,7 @@ export interface NewUser {
   address: string;
 }
 
-export interface NewProduct {
+export interface ReqProduct {
   name: string;
   description: string;
   price: number;

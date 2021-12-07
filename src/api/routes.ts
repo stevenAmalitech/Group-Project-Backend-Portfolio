@@ -7,4 +7,6 @@ export function setupRoutes(app: Express) {
 
   app.post("/products/product", productController.addProduct);
   app.get("/products/:id", productController.getProduct);
+  app.put("/products/:id", productController.updateProduct);
+  app.delete("/products/:id", productController.deleteProduct);
 }

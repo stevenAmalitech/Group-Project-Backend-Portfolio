@@ -1,8 +1,8 @@
 import { getProductRepository } from "../repositories/product.repository";
-import { NewProduct } from "../types/typings";
+import { ReqProduct } from "../types/typings";
 import { nanoid } from "nanoid/async";
 
-export async function addProduct(newProduct: NewProduct) {
+export async function addProduct(newProduct: ReqProduct) {
   try {
     const productRepository = getProductRepository();
 
@@ -26,6 +26,28 @@ export async function getProduct(id: number) {
     const [product] = await getProductRepository().find({ where: { id } });
 
     return product;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateProduct(id: number, newProductFields: ReqProduct) {
+  try {
+    const result = await getProductRepository().update(id, newProductFields);
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function deleteProduct(id: number) {
+  try {
+    const result = await getProductRepository().delete(id);
+
+    console.log(result);
+    
+    return result;
   } catch (error) {
     throw error;
   }

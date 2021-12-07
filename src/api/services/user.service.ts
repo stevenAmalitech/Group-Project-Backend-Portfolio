@@ -1,6 +1,8 @@
 import { getUserRepository } from "../repositories/user.repository";
 import { UserDetails } from "../types/typings";
 
+// TODO: Passport js
+
 export async function addUser(newUser: UserDetails) {
   try {
     const userRepository = getUserRepository();
@@ -22,7 +24,9 @@ export async function addUser(newUser: UserDetails) {
       address: saved.address,
       telephone: saved.telephone,
     };
-  } catch (error) {
+  } catch (error: any) {
+    if (error?.code == "23505") throw { status: 409, message: "email exists" };
+
     throw error;
   }
 }

@@ -9,7 +9,10 @@ export async function addUser(req: Request, res: Response) {
     const result = await userService.addUser(userDetails);
 
     res.send(result);
-  } catch (error) {
+  } catch (error: any) {
+    if (error.status) return res.status(error.status).send(error.message);
+    if (error.isJoi) return res.status(422).send(error.message);
+
     res.status(400).send(error);
   }
 }

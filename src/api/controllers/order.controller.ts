@@ -4,7 +4,10 @@ import * as orderService from "../services/order.service";
 
 export async function addOrder(req: Request, res: Response) {
   try {
-    const order = await orderSchemas.addOrder(req.body);
+    const order = await orderSchemas.addOrder({
+      ...req.body,
+      ...req.params,
+    });
 
     const result = await orderService.addOrder(order);
 
@@ -55,7 +58,7 @@ export async function deleteOrder(req: Request, res: Response) {
     const order = await orderSchemas.deleteOrder(req.params);
 
     const result = await orderService.deleteOrder(order);
-    
+
     res.send(result);
   } catch (error: any) {
     if (error.status) return res.status(error.status).send(error.message);

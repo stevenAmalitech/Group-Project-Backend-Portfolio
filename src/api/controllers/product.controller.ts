@@ -61,3 +61,13 @@ export async function deleteProduct(req: Request, res: Response) {
     res.status(400).send(error);
   }
 }
+
+export async function getAllProducts(req: Request, res: Response) {
+  try {
+    const result = await productService.getAllProducts();
+
+    res.send(result);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+}

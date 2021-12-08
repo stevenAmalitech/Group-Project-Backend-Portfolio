@@ -5,8 +5,10 @@ import * as productController from "./controllers/product.controller";
 export function setupRoutes(app: Express) {
   app.post("/users/user", userController.addUser);
 
-  app.post("/products/product", productController.addProduct);
+  app.get("/products" , productController.getAllProducts);
   app.get("/products/:id", productController.getProduct);
   app.put("/products/:id", productController.updateProduct);
+  app.post("/products/product", productController.addProduct);
   app.delete("/products/:id", productController.deleteProduct);
+
 }

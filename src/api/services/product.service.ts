@@ -45,9 +45,17 @@ export async function deleteProduct(id: number) {
   try {
     const result = await getProductRepository().delete(id);
 
-    console.log(result);
-    
     return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllProducts() {
+  try {
+    const products = await getProductRepository().find();
+
+    return products
   } catch (error) {
     throw error;
   }

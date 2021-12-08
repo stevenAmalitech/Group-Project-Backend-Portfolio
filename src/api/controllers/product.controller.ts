@@ -1,10 +1,10 @@
 import type { Request, Response } from "express";
-import * as productSchemas from "../validations/product.validation";
+import * as itemSchemas from "../validations/item.validation";
 import * as productService from "../services/product.service";
 
 export async function addProduct(req: Request, res: Response) {
   try {
-    const product = await productSchemas.addProduct.validateAsync(req.body);
+    const product = await itemSchemas.addProduct.validateAsync(req.body);
 
     const result = await productService.addProduct(product);
 
@@ -37,7 +37,7 @@ export async function updateProduct(req: Request, res: Response) {
     const id = +req.params.id;
     if (!Number.isInteger(id)) return res.status(400).send("invalid id");
 
-    const newProductFields = await productSchemas.updateProduct(req.query);
+    const newProductFields = await itemSchemas.updateProduct(req.query);
 
     const result = await productService.updateProduct(id, newProductFields);
     res.send(result);

@@ -12,3 +12,8 @@ export interface ReqProduct {
   description: string;
   price: number;
 }
+
+export interface ReqInventory {
+  product_id: string;
+  quantity: string;
+}

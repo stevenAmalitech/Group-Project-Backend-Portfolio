@@ -12,3 +12,9 @@ export const updateProduct = (object: any) =>
     description: Joi.string(),
     price: Joi.number(),
   }).validateAsync(object);
+
+export const addInventory = (object: any) =>
+  Joi.object({
+    productId: Joi.number().required(),
+    quantity: Joi.number().required(),
+  }).validateAsync(object);

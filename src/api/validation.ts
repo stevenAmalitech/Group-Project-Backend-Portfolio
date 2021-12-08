@@ -27,10 +27,17 @@ export const inventorySchemas = {
 export const orderSchemas = {
   addOrder: (object: any) =>
     Joi.object({
-      id: Joi.number().required(),
       userId: Joi.number().required(),
-      items: Joi.object().required(),
-      total: Joi.object().required(),
+      items: Joi.array().required(),
+      total: Joi.number().required(),
+    }).validateAsync(object),
+
+  updateOrder: (object: any) =>
+    Joi.object({
+      orderId: Joi.number().required(),
+      userId: Joi.number(),
+      items: Joi.array(),
+      total: Joi.number(),
     }).validateAsync(object),
 };
 

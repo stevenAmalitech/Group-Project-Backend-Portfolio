@@ -2,6 +2,7 @@ import type { Express } from "express";
 import * as userController from "./controllers/user.controller";
 import * as productController from "./controllers/product.controller";
 import * as inventoryController from "./controllers/inventory.controller";
+import * as orderController from "./controllers/order.controller";
 
 export function setupRoutes(app: Express) {
   app.post("/users/user", userController.addUser);
@@ -13,4 +14,7 @@ export function setupRoutes(app: Express) {
   app.delete("/products/:id", productController.deleteProduct);
 
   app.post("/inventory", inventoryController.addInventory);
+
+  app.post("/orders/order", orderController.addOrder);
+  app.put("/orders/:orderId", orderController.updateOrder);
 }

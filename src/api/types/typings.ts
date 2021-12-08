@@ -8,12 +8,24 @@ export interface ReqUser {
 }
 
 export interface ReqProduct {
+  id: number;
   name: string;
   description: string;
   price: number;
 }
 
 export interface ReqInventory {
-  product_id: string;
+  id: number;
+  product_id: number;
   quantity: string;
+}
+
+export interface ReqOrder {
+  userId: number;
+  items: object;
+  total: number;
+}
+
+export interface ReqOrderUpdate extends ReqOrder {
+  orderId: number
 }

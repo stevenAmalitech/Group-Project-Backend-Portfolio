@@ -1,10 +1,10 @@
 import type { Request, Response } from "express";
 import * as inventoryService from "../services/inventory.service";
-import * as itemSchema from "../validations/item.validation";
+import { inventorySchemas } from "../validation";
 
 export async function addInventory(req: Request, res: Response) {
   try {
-    const inventory = await itemSchema.addInventory(req.body);
+    const inventory = await inventorySchemas.addInventory(req.body);
 
     const result = await inventoryService.addInventory(inventory);
 

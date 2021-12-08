@@ -24,8 +24,38 @@ export async function updateOrder(req: Request, res: Response) {
       ...req.params,
     });
 
-    const result = await orderService.updateOrder(order)
+    const result = await orderService.updateOrder(order);
 
+    res.send(result);
+  } catch (error: any) {
+    if (error.status) return res.status(error.status).send(error.message);
+    if (error.isJoi) return res.status(422).send(error.message);
+
+    res.status(400).send(error);
+  }
+}
+
+export async function getOrders(req: Request, res: Response) {
+  try {
+    const order = await orderSchemas.getOrder(req.params);
+
+    const result = await orderService.getOrders(order);
+
+    res.send(result);
+  } catch (error: any) {
+    if (error.status) return res.status(error.status).send(error.message);
+    if (error.isJoi) return res.status(422).send(error.message);
+
+    res.status(400).send(error);
+  }
+}
+
+export async function deleteOrder(req: Request, res: Response) {
+  try {
+    const order = await orderSchemas.deleteOrder(req.params);
+
+    const result = await orderService.deleteOrder(order);
+    
     res.send(result);
   } catch (error: any) {
     if (error.status) return res.status(error.status).send(error.message);

@@ -17,4 +17,8 @@ export function setupRoutes(app: Express) {
 
   app.post("/orders/order", orderController.addOrder);
   app.put("/orders/:orderId", orderController.updateOrder);
+  app.get("/users/:userId/orders/:orderId", orderController.getOrders);
+  app.get("/users/:userId/orders", orderController.getOrders);
+  app.delete("/users/:userId/orders/:orderId", orderController.deleteOrder)
+  app.delete("/users/:userId/orders", orderController.deleteOrder)
 }

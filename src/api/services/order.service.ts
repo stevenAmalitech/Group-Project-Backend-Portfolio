@@ -33,3 +33,32 @@ export async function updateOrder(newOrderFields: ReqOrderUpdate) {
     throw error;
   }
 }
+
+export async function getOrders(fields: GetOrdersArgs) {
+  try {
+    const { userId, orderId } = fields;
+    const where = orderId ? { id: orderId, userId } : { userId };
+
+    return await getOrderRepository().find({ where });
+  } catch (error) {
+    throw error;
+  }
+}
+
+interface GetOrdersArgs {
+  orderId?: number;
+  userId: number;
+}
+
+export async function deleteOrder(fields: GetOrdersArgs) {
+  try {
+    const { userId, orderId } = fields;
+    const filter = orderId ? { id: orderId, userId } : { userId };
+
+    await getOrderRepository().delete(filter as any);
+
+    return await getOrderRepository().find({ where: { userId } });
+  } catch (error) {
+    throw error;
+  }
+}

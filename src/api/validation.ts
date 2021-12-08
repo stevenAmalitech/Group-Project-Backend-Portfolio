@@ -39,6 +39,16 @@ export const orderSchemas = {
       items: Joi.array(),
       total: Joi.number(),
     }).validateAsync(object),
+
+  getOrder: (object: any) =>
+    Joi.object({
+      orderId: Joi.number(),
+      userId: Joi.number().required(),
+    }).validateAsync(object),
+
+  deleteOrder(object: any) {
+    return this.getOrder(object);
+  },
 };
 
 export const userSchemas = {

@@ -50,26 +50,5 @@ describe("api", () => {
     });
   });
 
-  describe("POST /products/product", () => {
-    it("should return product after save", () => {
-      const product = {
-        name: "sports headset",
-        description:
-          "wireless high-fidelity earbuds. Hands free in-line microphone",
-        price: 50,
-      };
 
-      return request(server)
-        .post("/products/product")
-        .send(product)
-        .expect(200)
-        .then(({ body }) => {
-          const { sku, name, price } = body;
-
-          expect(sku).to.be.a("string")
-          expect(name).to.be.equal(product.name)
-          expect(price).to.be.equal(product.price)
-        });
-    });
-  });
 });

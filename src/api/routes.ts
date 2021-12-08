@@ -3,6 +3,7 @@ import * as userController from "./controllers/user.controller";
 import * as productController from "./controllers/product.controller";
 import * as inventoryController from "./controllers/inventory.controller";
 import * as orderController from "./controllers/order.controller";
+import * as cartController from "./controllers/cart.controller";
 
 export function setupRoutes(app: Express) {
   app.post("/users/user", userController.addUser);
@@ -19,6 +20,8 @@ export function setupRoutes(app: Express) {
   app.put("/users/:userId/orders/:orderId", orderController.updateOrder);
   app.get("/users/:userId/orders/:orderId", orderController.getOrders);
   app.get("/users/:userId/orders", orderController.getOrders);
-  app.delete("/users/:userId/orders/:orderId", orderController.deleteOrder)
-  app.delete("/users/:userId/orders", orderController.deleteOrder)
+  app.delete("/users/:userId/orders/:orderId", orderController.deleteOrder);
+  app.delete("/users/:userId/orders", orderController.deleteOrder);
+
+  app.put("/users/:userId/cart", cartController.addCart);
 }

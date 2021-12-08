@@ -62,3 +62,12 @@ export const userSchemas = {
       address: Joi.string().required(),
     }).validateAsync(object),
 };
+
+export const cartSchemas = {
+  addCart: (object: any) =>
+    Joi.object({
+      items: Joi.array().required(),
+      total: Joi.number().required(),
+      userId: Joi.number().required()
+    }).validateAsync(object),
+};

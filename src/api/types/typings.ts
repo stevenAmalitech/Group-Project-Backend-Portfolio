@@ -21,11 +21,16 @@ export interface ReqInventory {
 }
 
 export interface ReqOrder {
-  userId: number;
   items: object;
   total: number;
 }
 
 export interface ReqOrderUpdate extends ReqOrder {
-  orderId: number
+  orderId: number;
+}
+
+export interface ReqCart {
+  items: object;
+  total: number;
+  userId: number
 }

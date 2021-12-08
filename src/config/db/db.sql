@@ -33,3 +33,10 @@ create table orders(
   total int not null,
   created_at timestamp default current_timestamp not null
 );
+
+create table carts(
+  id serial primary key,
+  user_id int references users(id) not null unique,
+  items json not null,
+  total int not null
+)

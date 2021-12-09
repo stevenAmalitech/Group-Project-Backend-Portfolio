@@ -4,9 +4,10 @@ import * as productController from "./controllers/product.controller";
 import * as inventoryController from "./controllers/inventory.controller";
 import * as orderController from "./controllers/order.controller";
 import * as cartController from "./controllers/cart.controller";
+import { passport } from "./passport";
 
 export function setupRoutes(app: Express) {
-  app.post("/users/user", userController.addUser);
+  app.post("/register", userController.addUser);
 
   app.get("/products", productController.getAllProducts);
   app.get("/products/:id", productController.getProduct);

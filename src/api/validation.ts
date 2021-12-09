@@ -58,7 +58,7 @@ export const userSchemas = {
       lastName: Joi.string().lowercase().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
-      telephone: Joi.string().required(),
+      telephone: Joi.string().max(10).required(),
       address: Joi.string().required(),
     }).validateAsync(object),
 };

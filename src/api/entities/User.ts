@@ -6,13 +6,13 @@ export default class User {
   // @ts-expect-error
   id: number;
 
-  @Column()
+  @Column({name:"first_name"})
   // @ts-expect-error
-  first_name: string;
+  firstName: string;
 
-  @Column()
+  @Column({name: "last_name"})
   // @ts-expect-error
-  last_name: string;
+  lastName: string;
 
   @Column()
   // @ts-expect-error

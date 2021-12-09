@@ -1,29 +1,21 @@
 import { getUserRepository } from "../repositories/user.repository";
 import { ReqUser } from "../types/typings";
-
-// TODO: Passport js
+import { hashPassword } from "../utils/hash";
 
 export async function addUser(newUser: ReqUser) {
   try {
     const userRepository = getUserRepository();
 
-    const args = {
-      ...newUser,
-      first_name: newUser.firstName,
-      last_name: newUser.lastName,
-    };
+    newUser.password = await hashPassword(newUser.password);
 
-    const user = userRepository.create(args);
+    const user = userRepository.create(newUser);
 
     const saved = await userRepository.save(user);
 
-    return {
-      firstName: saved.first_name,
-      lastName: saved.last_name,
-      email: saved.email,
-      address: saved.address,
-      telephone: saved.telephone,
-    };
+    // @ts-expect-error
+    delete saved.password;
+
+    return saved;
   } catch (error: any) {
     if (error?.code == "23505") throw { status: 409, message: "email exists" };
 

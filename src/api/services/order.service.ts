@@ -1,5 +1,5 @@
 import { getOrderRepository } from "../repositories/order.repository";
-import { ReqOrder, ReqOrderUpdate } from "../types/typings";
+import { ReqCart, ReqOrder, ReqOrderUpdate } from "../types/typings";
 
 export async function addOrder(object: ReqOrder) {
   try {
@@ -58,6 +58,20 @@ export async function deleteOrder(fields: GetOrdersArgs) {
     await getOrderRepository().delete(filter as any);
 
     return await getOrderRepository().find({ where: { userId } });
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function checkout(object: ReqCart) {
+  try {
+    const orderRepository = getOrderRepository();
+
+    const order = orderRepository.create(object as any);
+
+    const saved = await orderRepository.save(order);
+
+    return saved;
   } catch (error) {
     throw error;
   }

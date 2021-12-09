@@ -67,3 +67,18 @@ export async function deleteOrder(req: Request, res: Response) {
     res.status(400).send(error);
   }
 }
+
+export async function checkout(req: Request, res: Response) {
+  try {
+    const order = await orderSchemas.checkout({ ...req.params, ...req.body });
+
+    const result = await orderService.checkout(order);
+
+    res.send(result);
+  } catch (error: any) {
+    if (error.status) return res.status(error.status).send(error.message);
+    if (error.isJoi) return res.status(422).send(error.message);
+
+    res.status(400).send(error);
+  }
+}

@@ -49,6 +49,10 @@ export const orderSchemas = {
   deleteOrder(object: any) {
     return this.getOrder(object);
   },
+
+  checkout(object: any) {
+    return this.addOrder(object);
+  },
 };
 
 export const userSchemas = {
@@ -68,6 +72,6 @@ export const cartSchemas = {
     Joi.object({
       items: Joi.array().required(),
       total: Joi.number().required(),
-      userId: Joi.number().required()
+      userId: Joi.number().required(),
     }).validateAsync(object),
 };

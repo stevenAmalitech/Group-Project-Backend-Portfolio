@@ -10,7 +10,6 @@ export function setupRoutes(app: Express) {
   app.post("/register", userController.addUser);
   app.post("/login", passport.authenticate("local"), userController.er);
 
-
   app.get("/products", productController.getAllProducts);
   app.get("/products/:id", productController.getProduct);
   app.put("/products/:id", productController.updateProduct);
@@ -25,6 +24,8 @@ export function setupRoutes(app: Express) {
   app.get("/users/:userId/orders", orderController.getOrders);
   app.delete("/users/:userId/orders/:orderId", orderController.deleteOrder);
   app.delete("/users/:userId/orders", orderController.deleteOrder);
+
+  app.post("/users/:userId/cart/checkout", orderController.checkout);
 
   app.put("/users/:userId/cart", cartController.addCart);
   app.get("/users/:userId/cart", cartController.getCart);

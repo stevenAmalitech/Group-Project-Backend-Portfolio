@@ -7,9 +7,9 @@ export async function addCart(batch: ReqCart) {
 
     const cart = cartRepository.create(batch as any);
 
-    const saved = await cartRepository.upsert([cart as any], ["userId"]);
+    await cartRepository.upsert([cart as any], ["userId"]);
 
-    return saved;
+    return await cartRepository.find({ where: { userId: batch.userId } });
   } catch (error) {
     throw error;
   }

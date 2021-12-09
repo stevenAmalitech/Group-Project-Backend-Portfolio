@@ -16,3 +16,7 @@ export async function addUser(req: Request, res: Response) {
     res.status(400).send(error);
   }
 }
+
+export async function er(req: Request, res: Response) {
+  res.send(req.user);
+}

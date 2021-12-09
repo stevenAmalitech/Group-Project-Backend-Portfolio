@@ -14,3 +14,21 @@ export async function addCart(batch: ReqCart) {
     throw error;
   }
 }
+
+export async function getCart(userId: number) {
+  try {
+    return await getCartRepository().find({ where: { userId } });
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function deleteCart(userId: number) {
+  try {
+    const result = await addCart({ items: [], total: 0, userId });
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}

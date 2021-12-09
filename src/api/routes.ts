@@ -24,4 +24,6 @@ export function setupRoutes(app: Express) {
   app.delete("/users/:userId/orders", orderController.deleteOrder);
 
   app.put("/users/:userId/cart", cartController.addCart);
+  app.get("/users/:userId/cart", cartController.getCart);
+  app.delete("/users/:userId/cart", cartController.deleteCart);
 }

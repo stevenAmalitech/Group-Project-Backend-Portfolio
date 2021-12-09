@@ -16,3 +16,31 @@ export async function addCart(req: Request, res: Response) {
     res.status(400).send(error);
   }
 }
+
+export async function getCart(req: Request, res: Response) {
+  try {
+    const userId = +req.params.userId;
+    if (!Number.isInteger(userId))
+      return res.status(400).send("invalid userId");
+
+    const result = await cartService.getCart(userId);
+
+    res.send(result);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+}
+
+export async function deleteCart(req: Request, res: Response) {
+  try {
+    const userId = +req.params.userId;
+    if (!Number.isInteger(userId))
+      return res.status(400).send("invalid userId");
+
+    const result = await cartService.deleteCart(userId);
+
+    res.send(result);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+}

@@ -1,4 +1,6 @@
 import { createConnection, ConnectionOptions } from "typeorm";
+import pg from "pg";
+import connectPgSimple from "connect-pg-simple";
 
 const options: ConnectionOptions = {
   type: process.env.DB_TYPE as any,
@@ -10,7 +12,7 @@ const options: ConnectionOptions = {
   entities: ["src/api/entities/**/*.ts"],
 };
 
-export default async function connectDb() {
+export async function connectDb() {
   try {
     const connection = await createConnection(options);
     console.info(`Connected to ${connection.options.database} database`);
@@ -19,4 +21,18 @@ export default async function connectDb() {
   } catch (error) {
     console.error(error);
   }
+}
+
+export function connectSessionToDb(session: any) {
+  const pool = new pg.Pool({
+    host: process.env.DB_HOST,
+    port: +process.env.DB_PORT!,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+  });
+
+  const pgSession = connectPgSimple(session);
+
+  return new pgSession({ pool, tableName: "user_sessions" });
 }

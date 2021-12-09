@@ -65,6 +65,19 @@ export const userSchemas = {
       telephone: Joi.string().max(10).required(),
       address: Joi.string().required(),
     }).validateAsync(object),
+
+  updateUser: (object: any) =>
+    Joi.object({
+      id: Joi.number().required(),
+      firstName: Joi.string().lowercase(),
+      lastName: Joi.string().lowercase(),
+      email: Joi.string().email(),
+      password: Joi.string(),
+      telephone: Joi.string().max(10),
+      address: Joi.string(),
+    })
+      .rename("userId", "id")
+      .validateAsync(object),
 };
 
 export const cartSchemas = {

@@ -4,7 +4,10 @@ import * as cartService from "../services/cart.service";
 
 export async function addCart(req: Request, res: Response) {
   try {
-    const cart = await cartSchemas.addCart({ ...req.body, ...req.params });
+    if (!req.query.items) throw { status: 422, message: "items required" };
+
+    req.query.items = JSON.parse(req.query.items as string);
+    const cart = await cartSchemas.addCart({ ...req.query, ...req.params });
 
     const result = await cartService.addCart(cart);
 

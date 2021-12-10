@@ -5,6 +5,7 @@ import * as inventoryController from "./controllers/inventory.controller";
 import * as orderController from "./controllers/order.controller";
 import * as cartController from "./controllers/cart.controller";
 import { passport } from "./passport";
+import { swaggerServe, swaggerDocument } from "../config/swagger/swagger";
 
 export function setupRoutes(app: Express) {
   app.post("/register", userController.addUser);
@@ -33,4 +34,6 @@ export function setupRoutes(app: Express) {
   app.put("/users/:userId/cart", cartController.addCart);
   app.get("/users/:userId/cart", cartController.getCart);
   app.delete("/users/:userId/cart", cartController.deleteCart);
+
+  app.use("/api", swaggerServe, swaggerDocument);
 }

@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --build",
+    "start": "node build/index.js",
     "start:dev": "nodemon src/index.ts",
     "test": "mocha -r dotenv/config -r ts-node/register 'tests/**/*.ts'",
     "test:unit": "mocha -r dotenv/config -r ts-node/register src/**/*.test.ts"

@@ -1,4 +1,5 @@
 import express from "express";
+import "reflect-metadata";
 import passport from "passport";
 import session from "express-session";
 import { setupRoutes } from "./routes";

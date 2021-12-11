@@ -1,4 +1,4 @@
-import connectDb from "./db";
+import { connectDb } from "./db";
 import { expect } from "chai";
 
 describe("db.ts", () => {

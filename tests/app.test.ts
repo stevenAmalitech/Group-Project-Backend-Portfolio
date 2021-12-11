@@ -1,7 +1,7 @@
 import { before } from "mocha";
 import request from "supertest";
 import app from "../src/api/app";
-import connectDb from "../src/config/db/db";
+import { connectDb } from "../src/config/db/db";
 import type { Server } from "http";
 import { Connection } from "typeorm";
 import { expect } from "chai";
@@ -49,6 +49,4 @@ describe("api", () => {
         });
     });
   });
-
-
 });

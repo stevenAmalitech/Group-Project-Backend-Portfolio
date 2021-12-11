@@ -1,5 +1,5 @@
 import { EntityRepository, getCustomRepository, Repository } from "typeorm";
-import Cart from "../entities/Cart";
+import { Cart } from "../entities/Cart";
 
 @EntityRepository(Cart)
 class CartRepository extends Repository<Cart> {}

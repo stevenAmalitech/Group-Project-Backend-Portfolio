@@ -1,8 +1,7 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import Inventory from "./Inventory";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("products")
-export default class Product {
+export class Product {
   @PrimaryGeneratedColumn()
   // @ts-expect-error
   id: number;

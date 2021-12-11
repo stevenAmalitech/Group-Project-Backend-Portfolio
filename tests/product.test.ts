@@ -1,6 +1,6 @@
 import request from "supertest";
 import app from "../src/api/app";
-import connectDb from "../src/config/db/db";
+import { connectDb } from "../src/config/db/db";
 import type { Server } from "http";
 import { Connection } from "typeorm";
 import { expect } from "chai";
@@ -80,13 +80,16 @@ describe("Product", () => {
       const [productFromDb] = await getProductRepository().find({ take: 1 });
       const path = "/products/" + productFromDb.id;
 
-     return request(server).get(path).expect(200).then(res =>{
-       const {id,  price, sku} = res.body
+      return request(server)
+        .get(path)
+        .expect(200)
+        .then((res) => {
+          const { id, price, sku } = res.body;
 
-       expect(id).to.equal(productFromDb.id)
-       expect(sku).to.equal(productFromDb.sku)
-       expect(price).to.equal(productFromDb.price)
-     })
+          expect(id).to.equal(productFromDb.id);
+          expect(sku).to.equal(productFromDb.sku);
+          expect(price).to.equal(productFromDb.price);
+        });
     });
   });
 });

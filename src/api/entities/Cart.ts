@@ -5,10 +5,10 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import User from "./User";
+import { User } from "./User";
 
 @Entity("carts")
-export default class Cart {
+export class Cart {
   @PrimaryGeneratedColumn()
   // @ts-expect-error
   id: number;

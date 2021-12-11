@@ -1,16 +1,16 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity("users")
-export default class User {
+export class User {
   @PrimaryColumn()
   // @ts-expect-error
   id: number;
 
-  @Column({name:"first_name"})
+  @Column({ name: "first_name" })
   // @ts-expect-error
   firstName: string;
 
-  @Column({name: "last_name"})
+  @Column({ name: "last_name" })
   // @ts-expect-error
   lastName: string;
 

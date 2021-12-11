@@ -1,5 +1,5 @@
 import { EntityRepository, getCustomRepository, Repository } from "typeorm";
-import Order from "../entities/Orders";
+import {Order} from "../entities/Order";
 
 @EntityRepository(Order)
 class OrderRepository extends Repository<Order> {}

@@ -6,10 +6,10 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import User from "./User";
+import { User } from "./User";
 
 @Entity("orders")
-export default class Order {
+export class Order {
   @PrimaryGeneratedColumn()
   // @ts-expect-error
   id: number;

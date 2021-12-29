@@ -15,7 +15,8 @@ let connectionOptions: ConnectionOptions = {
 
   // entities: ["src/api/entities/**/*.ts"],
   // entities: ["../../api/entities/**/*.ts)"],
-  entities: [Cart, Inventory, Order, Product, User],
+  // entities: [Cart, Inventory, Order, Product, User],
+  entities: [__dirname + '../../api/entities/**/*']
 };
 
 if (process.env.DATABASE_URL) {

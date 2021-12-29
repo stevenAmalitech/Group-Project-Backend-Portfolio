@@ -14,9 +14,9 @@ let connectionOptions: ConnectionOptions = {
   logging: false,
 
   // entities: ["src/api/entities/**/*.ts"],
-  // entities: ["../../api/entities/**/*.ts)"],
-  // entities: [Cart, Inventory, Order, Product, User],
-  entities: [__dirname + '../../api/entities/**/*']
+  // entities: ["../../api/entities/**/*.{js,ts}"],
+  entities: [Cart, Inventory, Order, Product, User],
+  // entities: [__dirname + "../../api/entities/**/*.entity.{js,ts}"],
 };
 
 if (process.env.DATABASE_URL) {
@@ -36,7 +36,7 @@ if (process.env.DATABASE_URL) {
   });
 }
 
-console.log(connectionOptions)
+console.log(connectionOptions);
 
 export async function connectDb() {
   try {
